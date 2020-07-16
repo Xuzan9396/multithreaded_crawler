@@ -1,1 +1,5 @@
-*.md linguist-language=Golang
+*.go linguist-language=golang
+*.js linguist-language=golang
+*.css linguist-language=golang
+*.html linguist-language=golang
+*.txt linguist-language=golang
