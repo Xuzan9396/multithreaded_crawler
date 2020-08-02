@@ -5,20 +5,20 @@ import (
 	"io/ioutil"
 	"net/http"
 	"pacong/fetcher"
+	"regexp"
 	"testing"
 )
 
 func TestParseProfileList(t *testing.T) {
 
-	contents,err := fetcher.Fetch("https://album.zhenai.com/u/1028370723")
+	contents, err := fetcher.Fetch("https://album.zhenai.com/u/1028370723")
 	//contents,err := ioutil.ReadFile("citylist_test_data.html")
 	if err != nil {
 		panic(err)
 	}
 
-
-	result := PareProfile(contents,"xuzan")
-	fmt.Println(result);
+	result := PareProfile(contents, "xuzan")
+	fmt.Println(result)
 
 	//const resultSize = 470
 	//if len(result.Requests) != resultSize {
@@ -34,17 +34,12 @@ func TestParseProfileList(t *testing.T) {
 
 }
 
-
-
-
-
 func TestParseProfileList2(t *testing.T) {
 
 	url := "https://album.zhenai.com/u/1028370723"
 	method := "GET"
 
-	client := &http.Client {
-	}
+	client := &http.Client{}
 	req, err := http.NewRequest(method, url, nil)
 
 	if err != nil {
@@ -57,4 +52,18 @@ func TestParseProfileList2(t *testing.T) {
 	body, err := ioutil.ReadAll(res.Body)
 
 	fmt.Println(string(body))
+}
+
+//const cityListRe = `<a href="(http://www.zhenai.com/zhenghun/[0-9a-z]+)" [^>]*>([^<]+)</a>`
+
+func TestParseProfileList3(t *testing.T) {
+	content := "wxid_5953469534512:\n测试2"
+	var ageRe = regexp.MustCompile(`wxid_[0-9a-z]+:\n(.+)`)
+
+	byptes := ageRe.FindStringSubmatch(content)
+	for _, value := range byptes {
+		fmt.Println(value)
+
+	}
+
 }

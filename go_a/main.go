@@ -3,12 +3,12 @@ package main
 import (
 	"pacong/cmd"
 )
+
 //golang.org/x/text
 // golang.org/x/net/html
 
-
-
-func main()  {
+func main() {
+	//testxuzan.Xuzan()
 	cmd.Execute()
 	//var daemon bool
 	//startCmd := &cobra.Command{
@@ -28,7 +28,3 @@ func main()  {
 	//printWeiboList(all)
 	//fmt.Printf("%s\n",all)
 }
-
-
-
-
