@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"pacong/crontab"
 	"pacong/zhenai/engine"
 	"pacong/zhenai/parser"
 	"time"
@@ -48,8 +49,8 @@ with speed and efficiency.`,
 			},
 		}
 
-		//model := crontab.InitCrontab()
-		//go model.SchedulerLoop()
+		model := crontab.InitCrontab()
+		go model.SchedulerLoop()
 
 		engine.Run(data...)
 
